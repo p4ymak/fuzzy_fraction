@@ -1,0 +1,10 @@
+[package]
+name = "fuzzy_fraction"
+version = "0.1.0"
+authors = ["Roman Chumak <p4ymak@gmail.com>"]
+edition = "2018"
+license = "MIT"
+repository = "https://github.com/p4ymak/fuzzy_fraction"
+description = "Struct for approximated human-readable fraction representation.."
+readme = "README.md"
+keywords = ["struct", "fraction", "format", "math"]
