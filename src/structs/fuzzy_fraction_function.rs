@@ -1,4 +1,11 @@
 /// Approximate fraction. Fast and dirty.
+/// ```
+/// # use fuzzy_fraction::fuzzy_fraction;
+/// assert_eq!(fuzzy_fraction(13, 26), (1, 2));
+/// assert_eq!(fuzzy_fraction(1, 3), fuzzy_fraction(2, 6));
+/// assert_eq!(fuzzy_fraction(3, 1), fuzzy_fraction(6, 2));
+/// assert_eq!(fuzzy_fraction(4, 3), fuzzy_fraction(16, 12));
+/// ```
 pub fn fuzzy_fraction(n: usize, d: usize) -> (usize, usize) {
     match (n, d) {
         (0, 0) => return (0, 0),
