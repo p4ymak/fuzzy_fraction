@@ -8,8 +8,10 @@ use std::fmt::{Formatter, Result};
 
 #[derive(Debug)]
 pub struct FuzzyFraction {
-    pub n: isize, // numerator
-    pub d: isize, // denominator
+    /// Numerator
+    pub n: isize,
+    /// Denominator
+    pub d: isize,
 }
 
 impl std::fmt::Display for FuzzyFraction {
@@ -51,8 +53,12 @@ impl PartialEq for FuzzyFraction {
 
 impl FuzzyFraction {
     /// Constructs approximated fraction from one float number.
+    /// ```
+    /// # use fuzzy_fraction::FuzzyFraction;
     /// assert_eq!(format!("{}", FuzzyFraction::from_float(0.5)), "1/2");
     /// assert_eq!(format!("{}", FuzzyFraction::from_float(-1.33)), "-1 1/3");
+    ///
+    /// ```
     pub fn from_float<T: Float>(float: T) -> Self {
         let f = float.to_f32();
         let sign = match f {
@@ -67,8 +73,10 @@ impl FuzzyFraction {
     }
 
     /// Constructs approximated fraction from numerator and denominator.
+    /// ```
+    /// # use fuzzy_fraction::FuzzyFraction;
     /// assert_eq!(format!("{}", FuzzyFraction::from_ints(1920, 1080)), "1 7/9");
-    /// assert_eq!(format!("{}", FuzzyFraction::from_ints(-10, 131)), "-1/3");
+    /// assert_eq!(format!("{}", FuzzyFraction::from_ints(-10, 31)), "-1/3");
     /// assert_eq!(format!("{}", FuzzyFraction::from_ints(0, -42)), "0");
     /// assert_eq!(format!("{}", FuzzyFraction::from_ints(-42, 0)), "1");
     /// assert_eq!(
@@ -83,6 +91,7 @@ impl FuzzyFraction {
     ///     format!("{}", FuzzyFraction::from_ints(0, -199)),
     ///     format!("{}", FuzzyFraction::from_ints(0, 201))
     /// );
+    /// ```
     pub fn from_ints<T: Integer>(a: T, b: T) -> Self {
         let a = a.to_isize();
         let b = b.to_isize();
@@ -98,9 +107,12 @@ impl FuzzyFraction {
     }
 
     /// Returns absolute value as ratio in String;
+    /// ```
+    /// # use fuzzy_fraction::FuzzyFraction;
     /// let ff = FuzzyFraction::from_ints(-1920, 1080);
     /// assert_eq!(format!("{}", ff), "-1 7/9");
     /// assert_eq!(ff.ratio_fmt(), "16:9");
+    /// ```
     pub fn ratio_fmt(&self) -> String {
         format!("{}:{}", self.n.abs(), self.d)
     }
