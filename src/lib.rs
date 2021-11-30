@@ -8,6 +8,9 @@ mod tests {
     #[test]
     fn fuzzy_function() {
         assert_eq!(fuzzy_fraction(1, 2), fuzzy_fraction(3, 6));
+        assert_eq!(fuzzy_fraction(1, 3), fuzzy_fraction(2, 6));
+        assert_eq!(fuzzy_fraction(3, 1), fuzzy_fraction(6, 2));
+        assert_eq!(fuzzy_fraction(4, 3), fuzzy_fraction(16, 12));
     }
 
     #[test]
@@ -43,10 +46,13 @@ mod tests {
             format!("{}", FuzzyFraction::from_ints(199, 99)),
             format!("{}", FuzzyFraction::from_ints(201, 100))
         );
-
         assert_eq!(
             format!("{}", FuzzyFraction::from_ints(-199, 0)),
             format!("{}", FuzzyFraction::from_ints(201, 0))
+        );
+        assert_eq!(
+            format!("{}", FuzzyFraction::from_ints(0, -199)),
+            format!("{}", FuzzyFraction::from_ints(0, 201))
         );
     }
 }
