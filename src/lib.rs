@@ -30,6 +30,10 @@ mod tests {
         assert_eq!(format!("{}", ff), "1 7/9");
         assert_eq!(ff.ratio_fmt(), "16:9");
 
+        ff = FuzzyFraction::from_ints(-10, 31);
+        assert_eq!(format!("{}", ff), "-1/3");
+        assert_eq!(ff.ratio_fmt(), "1:3");
+
         ff = FuzzyFraction::from_ints(-31, 10);
         assert_eq!(format!("{}", ff), "-3");
         assert_eq!(ff.ratio_fmt(), "3:1");

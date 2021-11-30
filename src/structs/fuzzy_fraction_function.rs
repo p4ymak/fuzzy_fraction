@@ -1,3 +1,4 @@
+/// Approximate fraction. Fast and dirty.
 pub fn fuzzy_fraction(n: usize, d: usize) -> (usize, usize) {
     match (n, d) {
         (0, 0) => return (0, 0),
